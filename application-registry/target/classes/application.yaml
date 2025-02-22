@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: application-registry
+  config:
+    import: "optional:configserver:http://localhost:8088"
+  datasource:
+    url: jdbc:mysql://localhost:3306/visa_db
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 12345678
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+    ddl-auto: update
+    show-sql: true
