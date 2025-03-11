@@ -11,6 +11,15 @@
         <module name="config-server" />
         <module name="service-registry" />
       </profile>
+      <profile name="Annotation profile for user-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar" />
+        </processorPath>
+        <module name="user-service" />
+      </profile>
       <profile name="Annotation profile for application-registry" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -39,6 +48,7 @@
       <module name="department-service" options="-parameters" />
       <module name="employee-service" options="-parameters" />
       <module name="service-registry" options="-parameters" />
+      <module name="user-service" options="-parameters" />
       <module name="visa-service-registry" options="-parameters" />
     </option>
   </component>

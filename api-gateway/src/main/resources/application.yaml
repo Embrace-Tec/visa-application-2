@@ -8,8 +8,11 @@ eureka:
 
 management:
   tracing:
+    # Disable tracing (Zipkin)
+    enabled: false
+    # Disable sampling (as you don't need tracing)
     sampling:
-      probability: 1.0
+      probability: 0.0
 
 spring:
   application:
@@ -19,11 +22,11 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: employee-service
-          uri: lb://employee-service
+        - id: application-registry
+          uri: lb://application-registry
           predicates:
-            - Path=/employee/**
-        - id: department-service
-          uri: lb://department-service
+            - Path=/api/visa-applications/**
+        - id: user-service
+          uri: lb://user-service
           predicates:
-            - Path=/department/**
+            - Path=/auth/**
