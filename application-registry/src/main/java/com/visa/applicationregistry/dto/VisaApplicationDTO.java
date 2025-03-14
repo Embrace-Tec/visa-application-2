@@ -15,10 +15,22 @@ public class VisaApplicationDTO {
     private LocalDateTime submissionDate;
     private PaymentMethod paymentMethod;
 
+    // Fields for Visa Application Details
+    private String passportId;
+    private String applicantName;
+    private String photoUrl;
+    private String nationality;
+    private String address;
+    private String contactNumber;
+
+    // Fields for Payment Details
+    private PaymentDTO payment;
+
+    // Constructors
     public VisaApplicationDTO() {
     }
 
-    public VisaApplicationDTO(Long applicationId, Long userId, VisaType visaType, SubCategory subCategory, ApplicationStatus status, PaymentStatus paymentStatus, LocalDateTime submissionDate, PaymentMethod paymentMethod) {
+    public VisaApplicationDTO(Long applicationId, Long userId, VisaType visaType, SubCategory subCategory, ApplicationStatus status, PaymentStatus paymentStatus, LocalDateTime submissionDate, PaymentMethod paymentMethod, String passportId, String applicantName, String photoUrl, String nationality, String address, String contactNumber, PaymentDTO payment) {
         this.applicationId = applicationId;
         this.userId = userId;
         this.visaType = visaType;
@@ -27,8 +39,16 @@ public class VisaApplicationDTO {
         this.paymentStatus = paymentStatus;
         this.submissionDate = submissionDate;
         this.paymentMethod = paymentMethod;
+        this.passportId = passportId;
+        this.applicantName = applicantName;
+        this.photoUrl = photoUrl;
+        this.nationality = nationality;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.payment = payment;
     }
 
+    // Getters and Setters
     public Long getApplicationId() {
         return applicationId;
     }
@@ -91,5 +111,61 @@ public class VisaApplicationDTO {
 
     public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public String getPassportId() {
+        return passportId;
+    }
+
+    public void setPassportId(String passportId) {
+        this.passportId = passportId;
+    }
+
+    public String getApplicantName() {
+        return applicantName;
+    }
+
+    public void setApplicantName(String applicantName) {
+        this.applicantName = applicantName;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public PaymentDTO getPayment() {
+        return payment;
+    }
+
+    public void setPayment(PaymentDTO payment) {
+        this.payment = payment;
     }
 }

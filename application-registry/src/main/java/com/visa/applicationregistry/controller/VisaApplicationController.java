@@ -1,6 +1,7 @@
 package com.visa.applicationregistry.controller;
 
 import com.visa.applicationregistry.dto.VisaApplicationDTO;
+import com.visa.applicationregistry.entity.ApplicationStatus;
 import com.visa.applicationregistry.service.VisaApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,12 @@ public class VisaApplicationController {
         }
         VisaApplicationDTO createdApplication = visaApplicationService.createVisaApplication(visaApplicationDTO);
         return new ResponseEntity<>(createdApplication, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/pending")
+    public ResponseEntity<List<VisaApplicationDTO>> getPendingVisaApplications() {
+        List<VisaApplicationDTO> pendingApplications = visaApplicationService.getPendingVisaApplications();
+        return ResponseEntity.ok(pendingApplications);
     }
 
     private boolean isValidUserToken(String token) {
@@ -71,4 +78,22 @@ public class VisaApplicationController {
         visaApplicationService.deleteVisaApplication(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}/approve")
+    public ResponseEntity<VisaApplicationDTO> approveVisaApplication(@PathVariable Long id) {
+        VisaApplicationDTO updatedApplication = visaApplicationService.updateApplicationStatus(id, ApplicationStatus.APPROVED);
+        return ResponseEntity.ok(updatedApplication);
+    }
+    @PutMapping("/{id}/reject")
+    public ResponseEntity<VisaApplicationDTO> rejectVisaApplication(@PathVariable Long id) {
+        VisaApplicationDTO updatedApplication = visaApplicationService.updateApplicationStatus(id, ApplicationStatus.REJECTED);
+        return ResponseEntity.ok(updatedApplication);
+    }
+
+    @PutMapping("/{id}/reset")
+    public ResponseEntity<VisaApplicationDTO> resetVisaApplication(@PathVariable Long id) {
+        VisaApplicationDTO updatedApplication = visaApplicationService.updateApplicationStatus(id, ApplicationStatus.PENDING);
+        return ResponseEntity.ok(updatedApplication);
+    }
+
 }

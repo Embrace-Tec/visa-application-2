@@ -20,7 +20,7 @@
         </processorPath>
         <module name="user-service" />
       </profile>
-      <profile name="Annotation profile for application-registry" enabled="true">
+      <profile name="Annotation profile for review-and-approval-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -28,6 +28,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="application-registry" />
+        <module name="reviewandapprovalservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -47,6 +48,7 @@
       <module name="config-server" options="-parameters" />
       <module name="department-service" options="-parameters" />
       <module name="employee-service" options="-parameters" />
+      <module name="reviewandapprovalservice" options="-parameters" />
       <module name="service-registry" options="-parameters" />
       <module name="user-service" options="-parameters" />
       <module name="visa-service-registry" options="-parameters" />

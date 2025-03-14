@@ -1,11 +1,5 @@
 package com.visa.userservice.service;
 
-/**
- * @author : L.H.J
- * @File: UserService
- * @mailto : lharshana2002@gmail.com
- * @created : 2025-03-10, Monday
- **/
 import com.visa.userservice.entity.User;
 import com.visa.userservice.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -30,3 +30,7 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/auth/**
+        - id: reviewandapprovalservice
+          uri: lb://reviewandapprovalservice
+          predicates:
+            - Path=/api/review-approval/**

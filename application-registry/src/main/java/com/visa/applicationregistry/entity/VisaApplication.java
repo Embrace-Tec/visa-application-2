@@ -12,7 +12,7 @@ public class VisaApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long applicationId;
 
-    private Long userId; // Assuming user exists in another service
+    private Long userId;
 
     @Enumerated(EnumType.STRING)
     private VisaType visaType;
@@ -31,7 +31,10 @@ public class VisaApplication {
     @OneToOne(mappedBy = "application", cascade = CascadeType.ALL)
     private Payment payment;
 
-    public VisaApplication(Long applicationId, Long userId, VisaType visaType, SubCategory subCategory, ApplicationStatus status, LocalDateTime submissionDate, PaymentStatus paymentStatus, Payment payment) {
+    @OneToOne(mappedBy = "visaApplication", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private VisaApplicationDetails visaApplicationDetails;
+
+    public VisaApplication(Long applicationId, Long userId, VisaType visaType, SubCategory subCategory, ApplicationStatus status, LocalDateTime submissionDate, PaymentStatus paymentStatus, Payment payment, VisaApplicationDetails visaApplicationDetails) {
         this.applicationId = applicationId;
         this.userId = userId;
         this.visaType = visaType;
@@ -40,6 +43,7 @@ public class VisaApplication {
         this.submissionDate = submissionDate;
         this.paymentStatus = paymentStatus;
         this.payment = payment;
+        this.visaApplicationDetails = visaApplicationDetails;
     }
 
     public VisaApplication() {
@@ -107,5 +111,12 @@ public class VisaApplication {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+    public VisaApplicationDetails getVisaApplicationDetails() {
+        return visaApplicationDetails;
+    }
+
+    public void setVisaApplicationDetails(VisaApplicationDetails visaApplicationDetails) {
+        this.visaApplicationDetails = visaApplicationDetails;
     }
 }
